@@ -17,7 +17,7 @@ describe('Login Page Validation Tests', () => {
   it('Email not registered', () => {
     cy.get('#emailOrUsername').type('unregistered@example.com');
     cy.get('#password').type('Admin123');
-    cy.get('#eyeicon').click();
+    cy.get('#eyeIcon').click();
     cy.get('button[type="submit"]').click();
     cy.contains('Invalid email! Please check your entry.').should('be.visible');
   });
@@ -25,7 +25,7 @@ describe('Login Page Validation Tests', () => {
   it('Incorrect password', () => {
     cy.get('#emailOrUsername').type('admin');
     cy.get('#password').type('WrongPassword123');
-    cy.get('#eyeicon').click();
+    cy.get('#eyeIcon').click();
     cy.get('button[type="submit"]').click();
     cy.contains('Incorrect password!').should('be.visible');
   });
@@ -45,7 +45,8 @@ describe('Login Page Validation Tests', () => {
   it('Successful Login', () => {
     cy.get('#emailOrUsername').type('admin');
     cy.get('#password').type('Admin123');
+    cy.get('#eyeIcon').click();
+    cy.get('#remember').check();
     cy.get('button[type="submit"]').click();
   });
 });
-
