@@ -7,9 +7,45 @@ describe('Login Page Validation Tests', () => {
     cy.visit(baseUrl); 
   });
 
-  it('Should add a new user after login', () => {
+  it('Invalid email', () => {
+    cy.get('#emailOrUsername').type('invalid-email');
+    cy.get('#password').type('Admin123');
+    cy.get('button[type="submit"]').click();
+    cy.contains('Email/Username does not exist.').should('be.visible');
+  });
+
+  it('Email not registered', () => {
+    cy.get('#emailOrUsername').type('unregistered@example.com');
+    cy.get('#password').type('Admin123');
+    cy.get('#eyeicon').click();
+    cy.get('button[type="submit"]').click();
+    cy.contains('Invalid email! Please check your entry.').should('be.visible');
+  });
+
+  it('Incorrect password', () => {
+    cy.get('#emailOrUsername').type('admin');
+    cy.get('#password').type('WrongPassword123');
+    cy.get('#eyeicon').click();
+    cy.get('button[type="submit"]').click();
+    cy.contains('Incorrect password!').should('be.visible');
+  });
+
+  it('Empty Email Field', () => {
+    cy.get('#emailOrUsername').clear();
+    cy.get('#password').type('Admin123');
+    cy.get('button[type="submit"]').should('be.disabled');
+  });
+
+  it('Empty Password Field', () => {
+    cy.get('#emailOrUsername').type('admin');
+    cy.get('#password').clear();
+    cy.get('button[type="submit"]').should('be.disabled');
+  });
+
+  it('Successful Login', () => {
     cy.get('#emailOrUsername').type('admin');
     cy.get('#password').type('Admin123');
     cy.get('button[type="submit"]').click();
   });
 });
+
