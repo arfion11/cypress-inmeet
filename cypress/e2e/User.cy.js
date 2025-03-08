@@ -67,7 +67,7 @@ describe('User Page Edit Tests', () => {
     cy.contains('Username is required.') // Verifikasi pesan error untuk username
   });
 
-  it('Input edit user valid', () => {
+  it('Input password user invalid', () => {
     cy.visit('https://mris-staging.transtrack.id/users');
     cy.get('button[wire\\:click="openEditModal(\'a998c246-65c4-463b-b826-3e19899ff9b9\')"]').click();
     cy.get('#newPassword')
