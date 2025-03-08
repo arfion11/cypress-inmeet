@@ -15,6 +15,7 @@ describe('Meeting Room Add and Edit Test', () => {
     });
   
     it('dashboard meeting-rooms', () => {
+        cy.visit('https://mris-staging.transtrack.id/meeting-rooms'); 
       cy.url().should('include', '/meeting-rooms');  
     });
   });

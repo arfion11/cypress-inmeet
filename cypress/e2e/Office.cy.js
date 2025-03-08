@@ -14,8 +14,9 @@ describe('Office Add and Edit Tests', () => {
       });
     });
   
-    it('dashboard offices', () => {
-      cy.url().should('include', '/offices');  
-    });
+    it('should allow user to access offices page directly without relogin', () => {
+        cy.visit('https://mris-staging.transtrack.id/offices');  
+        cy.url().should('include', '/offices'); 
+      });
   });
   

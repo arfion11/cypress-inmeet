@@ -15,6 +15,7 @@ describe('Booking Room Add and Edit Tests', () => {
     });
   
     it('dashboard booking-appointments', () => {
+        cy.visit('https://mris-staging.transtrack.id/booking-appointments'); 
       cy.url().should('include', '/booking-appointments');  
     });
   });
