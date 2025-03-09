@@ -51,7 +51,7 @@ describe('Office Add Tests', () => {
     ];
     cy.get('#address').clear().type(randomAddress[Math.floor(Math.random() * randomAddress.length)]);
         cy.get('button[wire\\:click="store"]').click();
-        cy.contains('Office name is required.');
+        cy.contains('Office name is required.').should('be.visible');;
       });
 
       it('check validasi region tidak terisi', () => {
@@ -72,7 +72,7 @@ describe('Office Add Tests', () => {
     ];
     cy.get('#address').clear().type(randomAddress[Math.floor(Math.random() * randomAddress.length)]);
         cy.get('button[wire\\:click="store"]').click();
-        cy.contains('Region is required.');
+        cy.contains('Region is required.').should('be.visible');;
       });
 
       it('check validasi address tidak terisi', () => {
@@ -93,7 +93,7 @@ describe('Office Add Tests', () => {
     ];
     cy.get('#address').clear();
         cy.get('button[wire\\:click="store"]').click();
-        cy.contains('Address is required.');
+        cy.contains('Address is required.').should('be.visible');;
       });
 
       it('Mencegah penambahan office duplikat', () => {
@@ -104,7 +104,7 @@ describe('Office Add Tests', () => {
     cy.get('#region').should('be.visible').type('Philippines');
     cy.get('#address').should('be.visible').type('221B Baker St, London NW1 6XE, United Kingdom');;
         cy.get('button[wire\\:click="store"]').click();
-        cy.contains('The office name has already been taken.');
+        cy.contains('The office name has already been taken.').should('be.visible');;
       });
   });
   

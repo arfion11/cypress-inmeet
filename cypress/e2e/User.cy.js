@@ -6,12 +6,12 @@ describe('User Page Add Tests', () => {
   beforeEach(() => {
     cy.session('userSession', () => {
       cy.visit(baseUrl);
-      cy.get('#emailOrUsername').type('admin'); // Username yang valid
-      cy.get('#password').type('Admin123');    // Password yang valid
+      cy.get('#emailOrUsername').type('admin'); 
+      cy.get('#password').type('Admin123');    
       cy.get('#eyeIcon').click();
       cy.get('#remember').check();
       cy.get('button[type="submit"]').click();
-      cy.visit('https://mris-staging.transtrack.id/users'); // Mengunjungi halaman users setelah login
+      cy.visit('https://mris-staging.transtrack.id/users'); 
     });
   });
   it('Input add office valid', () => {
@@ -29,8 +29,8 @@ describe('User Page Add Tests', () => {
     cy.get('#password').clear().type(usernameFromEmail); 
     cy.get('#eyeIconPassword').click();
     cy.get('button[wire\\:click="store"]')
-    .should('be.visible')  // Memastikan tombol Add User terlihat
-    // .click(); 
+    .should('be.visible')  
+    .click(); 
   });
 
   it('validasi invalid email', () => {
@@ -48,9 +48,9 @@ describe('User Page Add Tests', () => {
     cy.get('#password').clear().type(usernameFromEmail); 
     cy.get('#eyeIconPassword').click();
     cy.get('button[wire\\:click="store"]')
-    .should('be.visible')  // Memastikan tombol Add User terlihat
+    .should('be.visible') 
     .click(); 
-    cy.contains('Email must be a valid Transtrack email.');
+    cy.contains('Email must be a valid Transtrack email.').should('be.visible');;
   });
 
   it('Validasi create password least 8 characters', () => {
@@ -75,7 +75,7 @@ describe('User Page Add Tests', () => {
     cy.get('button[wire\\:click="store"]')
       .should('be.visible')
       .click(); 
-    cy.contains('Password must be at least 8 characters.');
+    cy.contains('Password must be at least 8 characters.').should('be.visible');;
 });
 
 it('Validasi create password must contain at least one lowercase and one uppercase', () => {
@@ -100,7 +100,7 @@ it('Validasi create password must contain at least one lowercase and one upperca
   cy.get('button[wire\\:click="store"]')
     .should('be.visible')
     .click(); 
- cy.contains('Password must contain at least one lowercase and one uppercase letter.');
+  cy.contains('Password must contain at least one lowercase and one uppercase letter.').should('be.visible');;
   });
 
   it('Input add office valid with empty email field', () => {
@@ -119,7 +119,7 @@ it('Validasi create password must contain at least one lowercase and one upperca
     cy.get('button[wire\\:click="store"]')
       .should('be.visible')  
       .click();
-      cy.contains('Email is required.')
+      cy.contains('Email is required.').should('be.visible');
 });
 it('Input add office valid with empty username field', () => {
   cy.visit('https://mris-staging.transtrack.id/users');
@@ -136,7 +136,7 @@ it('Input add office valid with empty username field', () => {
   cy.get('button[wire\\:click="store"]')
     .should('be.visible')  
     .click();
-    cy.contains('Username is required.')  
+    cy.contains('Username is required.').should('be.visible'); 
 });
 
 it('Input add office valid with empty password field', () => {
@@ -157,7 +157,7 @@ it('Input add office valid with empty password field', () => {
   cy.get('button[wire\\:click="store"]')
     .should('be.visible')  
     .click();  
-    cy.contains('Password is required.')
+    cy.contains('Password is required.').should('be.visible');
 });
 
 it('Mencegah penambahan user duplikat', () => {
@@ -171,8 +171,8 @@ it('Mencegah penambahan user duplikat', () => {
   cy.get('button[wire\\:click="store"]')
     .should('be.visible')  
     .click();  
-    cy.contains('The email has already been taken.')
-    cy.contains('The username has already been taken.')
+    cy.contains('The email has already been taken.').should('be.visible');
+    cy.contains('The username has already been taken.').should('be.visible');
 });
 });
 
@@ -182,12 +182,12 @@ describe('User Page Edit Tests', () => {
   beforeEach(() => {
     cy.session('userSession', () => {
       cy.visit(baseUrl);
-      cy.get('#emailOrUsername').type('admin'); // Username yang valid
-      cy.get('#password').type('Admin123');    // Password yang valid
+      cy.get('#emailOrUsername').type('admin'); 
+      cy.get('#password').type('Admin123');    
       cy.get('#eyeIcon').click();
       cy.get('#remember').check();
       cy.get('button[type="submit"]').click();
-      cy.visit('https://mris-staging.transtrack.id/users'); // Mengunjungi halaman users setelah login
+      cy.visit('https://mris-staging.transtrack.id/users'); 
     });
   });
 
@@ -199,7 +199,7 @@ describe('User Page Edit Tests', () => {
       .type('Arfion@transtrack.id');
     cy.get('#new-username')
       .clear()
-      .type('Arfion');  // Memasukkan username baru
+      .type('Arfion'); 
     cy.get('#newPassword')
       .clear()
       .type('Arfion123');
@@ -220,7 +220,7 @@ describe('User Page Edit Tests', () => {
       .clear()
       .type('Arfion123');
     cy.get('button[wire\\:click="update"]').click();
-    cy.contains('Email must be a valid Transtrack email.');
+    cy.contains('Email must be a valid Transtrack email.')
   });
 
   it('check validasi email tidak terisi', () => {
@@ -231,7 +231,7 @@ describe('User Page Edit Tests', () => {
     .clear()
     .type('Arfion222');
     cy.get('button[wire\\:click="update"]').click();
-    cy.contains('Email is required.') // Verifikasi pesan error untuk email
+    cy.contains('Email is required.')
   });
 
   it('check validasi username tidak terisi', () => {
@@ -240,7 +240,7 @@ describe('User Page Edit Tests', () => {
     cy.get('#new-username').should('be.visible');
     cy.get('#new-username').clear();
     cy.get('button[wire\\:click="update"]').click();
-    cy.contains('Username is required.') // Verifikasi pesan error untuk username
+    cy.contains('Username is required.')
   });
 
   it('Input password user invalid', () => {
@@ -251,7 +251,7 @@ describe('User Page Edit Tests', () => {
       .type('arfion123');
     cy.get('#eyeIconNewPassword').click();
     cy.get('button[wire\\:click="update"]').click();
-    cy.contains('Password must contain at least one lowercase and one uppercase letter.') 
+    cy.contains('Password must contain at least one lowercase and one uppercase letter.')
   });
 
   it('Mencegah update user duplikat', () => {
@@ -265,6 +265,6 @@ describe('User Page Edit Tests', () => {
       .type('HR');  
     cy.get('#eyeIconNewPassword').click();
     cy.get('button[wire\\:click="update"]').click();
-    cy.contains('The email has already been taken.') 
+    cy.contains('The email has already been taken.')
   });
 });
