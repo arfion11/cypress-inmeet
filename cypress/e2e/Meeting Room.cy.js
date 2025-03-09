@@ -41,7 +41,7 @@ describe('Meeting Room Add Test', () => {
         cy.get('#selectedOffice').select(randomOffice);
         cy.get('button[wire\\:click="store"]')
         .should('be.visible')  
-        // .click();
+        .click();
     });
 
     it('check validasi name tidak terisi', () => {
@@ -145,3 +145,22 @@ it('Input meeting-rooms duplikat', () => {
   cy.contains('The room name has already been taken.').should('be.visible'); 
 });
   });
+
+  describe('Meeting Room Edit Tests', () => {
+    const baseUrl = 'https://mris-staging.transtrack.id/';
+    beforeEach(() => {
+      cy.session('userSession', () => {
+        cy.visit(baseUrl);
+        cy.get('#emailOrUsername').type('admin'); 
+        cy.get('#password').type('Admin123');    
+        cy.get('#remember').check();
+        cy.get('button[type="submit"]').click();
+        cy.visit('https://mris-staging.transtrack.id/meeting-rooms');
+      });
+    });
+
+    it('should edit office details successfully', () => { 
+      cy.visit('https://mris-staging.transtrack.id/meeting-rooms');
+      cy.get('button[wire\\:click="openEditModal(\'54a3e4d4-792f-41cc-9362-a69bf55a4fd5\')"]').click();  
+  });
+});
