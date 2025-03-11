@@ -14,7 +14,7 @@ describe('Meeting Room Add Test', () => {
       });
     });
   
-    it('Input meeting-rooms', () => {
+    it('TC011 - Input meeting-rooms', () => {
         cy.visit('https://mris-staging.transtrack.id/meeting-rooms'); 
         cy.get('#AddMeetingRoomButton').should('be.visible') .click(); 
         cy.get('#roomName').should('be.visible');
@@ -44,7 +44,7 @@ describe('Meeting Room Add Test', () => {
         .click();
     });
 
-    it('check validasi name tidak terisi', () => {
+    it('TC014 - check validasi name tidak terisi', () => {
       cy.visit('https://mris-staging.transtrack.id/meeting-rooms'); 
       cy.get('#AddMeetingRoomButton').should('be.visible').click(); 
       cy.get('#roomName').should('be.visible');
@@ -71,7 +71,7 @@ describe('Meeting Room Add Test', () => {
         cy.contains('The room name field is required.').should('be.visible');
   });
   
-  it('check validasi capacity tidak terisi', () => {
+  it('TC015 - check validasi capacity tidak terisi', () => {
     cy.visit('https://mris-staging.transtrack.id/meeting-rooms'); 
     cy.get('#AddMeetingRoomButton').should('be.visible').click(); 
     cy.get('#roomName').should('be.visible');
@@ -100,7 +100,7 @@ describe('Meeting Room Add Test', () => {
       cy.contains('The capacity field is required.').should('be.visible'); 
 });
 
-it('check validasi office tidak terisi', () => {
+it('TC016 - check validasi office tidak terisi', () => {
   cy.visit('https://mris-staging.transtrack.id/meeting-rooms'); 
   cy.get('#AddMeetingRoomButton').should('be.visible').click(); 
   cy.get('#roomName').should('be.visible');
@@ -120,7 +120,7 @@ it('check validasi office tidak terisi', () => {
     cy.contains('The selected office field is required').should('be.visible'); 
 });
 
-it('Input meeting-rooms duplikat', () => {
+it('TC018 - Input meeting-rooms duplikat', () => {
   cy.visit('https://mris-staging.transtrack.id/meeting-rooms'); 
   cy.get('#AddMeetingRoomButton').should('be.visible') .click(); 
   cy.get('#roomName').should('be.visible');

@@ -14,7 +14,7 @@ describe('User Page Add Tests', () => {
       cy.visit('https://mris-staging.transtrack.id/users'); 
     });
   });
-  it('Input add office valid', () => {
+  it('TC010 - Input add office valid', () => {
     cy.visit('https://mris-staging.transtrack.id/users');
     cy.get('button[wire\\:click="openAddModal"]').click();
     cy.get('#email').should('be.visible');
@@ -33,7 +33,7 @@ describe('User Page Add Tests', () => {
     .click(); 
   });
 
-  it('validasi invalid email', () => {
+  it('TC012 - validasi invalid email', () => {
     cy.visit('https://mris-staging.transtrack.id/users');
     cy.get('button[wire\\:click="openAddModal"]').click();
     cy.get('#email').should('be.visible').clear();
@@ -53,7 +53,7 @@ describe('User Page Add Tests', () => {
     cy.contains('Email must be a valid Transtrack email.').should('be.visible');;
   });
 
-  it('Validasi create password least 8 characters', () => {
+  it('TC013 - Validasi create password least 8 characters', () => {
     cy.visit('https://mris-staging.transtrack.id/users');
     cy.get('button[wire\\:click="openAddModal"]').click();
     cy.get('#email').should('be.visible');
@@ -78,7 +78,7 @@ describe('User Page Add Tests', () => {
     cy.contains('Password must be at least 8 characters.').should('be.visible');;
 });
 
-it('Validasi create password must contain at least one lowercase and one uppercase', () => {
+it('TC013 - Validasi create password must contain at least one lowercase and one uppercase', () => {
   cy.visit('https://mris-staging.transtrack.id/users');
   cy.get('button[wire\\:click="openAddModal"]').click();
   cy.get('#email').should('be.visible');
@@ -103,7 +103,7 @@ it('Validasi create password must contain at least one lowercase and one upperca
   cy.contains('Password must contain at least one lowercase and one uppercase letter.').should('be.visible');;
   });
 
-  it('Input add office valid with empty email field', () => {
+  it('TC014 - Input add office valid with empty email field', () => {
     cy.visit('https://mris-staging.transtrack.id/users');
     cy.get('button[wire\\:click="openAddModal"]').click();
     cy.get('#email').should('be.visible');
@@ -121,7 +121,7 @@ it('Validasi create password must contain at least one lowercase and one upperca
       .click();
       cy.contains('Email is required.').should('be.visible');
 });
-it('Input add office valid with empty username field', () => {
+it('TC015 - Input add office valid with empty username field', () => {
   cy.visit('https://mris-staging.transtrack.id/users');
   cy.get('button[wire\\:click="openAddModal"]').click();
   cy.get('#email').should('be.visible');
@@ -139,7 +139,7 @@ it('Input add office valid with empty username field', () => {
     cy.contains('Username is required.').should('be.visible'); 
 });
 
-it('Input add office valid with empty password field', () => {
+it('TC016 - Input add office valid with empty password field', () => {
   cy.visit('https://mris-staging.transtrack.id/users');
   cy.get('button[wire\\:click="openAddModal"]').click();
   cy.get('#email').should('be.visible');
@@ -160,7 +160,7 @@ it('Input add office valid with empty password field', () => {
     cy.contains('Password is required.').should('be.visible');
 });
 
-it('Mencegah penambahan user duplikat', () => {
+it('TC018 - Mencegah penambahan user duplikat', () => {
   cy.visit('https://mris-staging.transtrack.id/users');
   cy.get('button[wire\\:click="openAddModal"]').click();
   cy.get('#email').should('be.visible');
@@ -191,7 +191,7 @@ describe('User Page Edit Tests', () => {
     });
   });
 
-  it('Input edit user valid', () => {
+  it('TC020 - Input edit user valid', () => {
     cy.visit('https://mris-staging.transtrack.id/users');
     cy.get('button[wire\\:click="openEditModal(\'a998c246-65c4-463b-b826-3e19899ff9b9\')"]').click();
     cy.get('#new-email')
@@ -207,7 +207,7 @@ describe('User Page Edit Tests', () => {
     cy.get('button[wire\\:click="update"]').click();
   });
 
-  it('Validasi invalid email', () => {
+  it('TC022 - Validasi invalid email', () => {
     cy.visit('https://mris-staging.transtrack.id/users');
     cy.get('button[wire\\:click="openEditModal(\'a998c246-65c4-463b-b826-3e19899ff9b9\')"]').click();
     cy.get('#new-email')
@@ -223,7 +223,7 @@ describe('User Page Edit Tests', () => {
     cy.contains('Email must be a valid Transtrack email.')
   });
 
-  it('check validasi email tidak terisi', () => {
+  it('TC024- check validasi email tidak terisi', () => {
     cy.visit('https://mris-staging.transtrack.id/users');
     cy.get('button[wire\\:click="openEditModal(\'a998c246-65c4-463b-b826-3e19899ff9b9\')"]').click();
     cy.get('#new-email').clear();
@@ -234,7 +234,7 @@ describe('User Page Edit Tests', () => {
     cy.contains('Email is required.')
   });
 
-  it('check validasi username tidak terisi', () => {
+  it('TC025 - check validasi username tidak terisi', () => {
     cy.visit('https://mris-staging.transtrack.id/users');
     cy.get('button[wire\\:click="openEditModal(\'a998c246-65c4-463b-b826-3e19899ff9b9\')"]').click();
     cy.get('#new-username').should('be.visible');
@@ -243,7 +243,7 @@ describe('User Page Edit Tests', () => {
     cy.contains('Username is required.')
   });
 
-  it('Input password user invalid', () => {
+  it('TC023 - Input password user invalid', () => {
     cy.visit('https://mris-staging.transtrack.id/users');
     cy.get('button[wire\\:click="openEditModal(\'a998c246-65c4-463b-b826-3e19899ff9b9\')"]').click();
     cy.get('#newPassword')
@@ -254,7 +254,7 @@ describe('User Page Edit Tests', () => {
     cy.contains('Password must contain at least one lowercase and one uppercase letter.')
   });
 
-  it('Mencegah update user duplikat', () => {
+  it('TC028 - Mencegah update user duplikat', () => {
     cy.visit('https://mris-staging.transtrack.id/users');
     cy.get('button[wire\\:click="openEditModal(\'a998c246-65c4-463b-b826-3e19899ff9b9\')"]').click();
     cy.get('#new-email')

@@ -49,10 +49,7 @@ describe('Login Page Validation Tests', () => {
     cy.get('#remember').check();
     cy.get('button[type="submit"]').click();
   });
-
-  // Logout Test after successful login
   it('Logout after successful login', () => {
-    // Login first
     cy.get('#emailOrUsername').type('admin');
     cy.get('#password').type('Admin123');
     cy.get('#eyeIcon').click();

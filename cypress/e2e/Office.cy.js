@@ -13,7 +13,7 @@ describe('Office Add Tests', () => {
         cy.visit('https://mris-staging.transtrack.id/offices');
       });
     });
-      it('Input add office valid', () => {
+      it('TC011 - Input add office valid', () => {
         cy.visit('https://mris-staging.transtrack.id/offices');
         cy.get('button[wire\\:click="openAddModal"]').click();
     cy.get('#office_name').should('be.visible');
@@ -33,7 +33,7 @@ describe('Office Add Tests', () => {
         cy.get('button[wire\\:click="store"]').click();
       });
 
-      it('check validasi office name tidak terisi', () => {
+      it('TC015 - check validasi office name tidak terisi', () => {
         cy.visit('https://mris-staging.transtrack.id/offices');
         cy.get('button[wire\\:click="openAddModal"]').click();
     cy.get('#office_name').should('be.visible');
@@ -54,7 +54,7 @@ describe('Office Add Tests', () => {
         cy.contains('Office name is required.').should('be.visible');;
       });
 
-      it('check validasi region tidak terisi', () => {
+      it('TC016 - check validasi region tidak terisi', () => {
         cy.visit('https://mris-staging.transtrack.id/offices');
         cy.get('button[wire\\:click="openAddModal"]').click();
     cy.get('#office_name').should('be.visible');
@@ -75,7 +75,7 @@ describe('Office Add Tests', () => {
         cy.contains('Region is required.').should('be.visible');;
       });
 
-      it('check validasi address tidak terisi', () => {
+      it('TC017 - check validasi address tidak terisi', () => {
         cy.visit('https://mris-staging.transtrack.id/offices');
         cy.get('button[wire\\:click="openAddModal"]').click();
     cy.get('#office_name').should('be.visible');
@@ -96,7 +96,7 @@ describe('Office Add Tests', () => {
         cy.contains('Address is required.').should('be.visible');;
       });
 
-      it('Mencegah penambahan office duplikat', () => {
+      it('TC019 - Mencegah penambahan office duplikat', () => {
         cy.visit('https://mris-staging.transtrack.id/offices');
         cy.get('button[wire\\:click="openAddModal"]').click();
     cy.get('#office_name').should('be.visible');
