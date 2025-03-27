@@ -259,10 +259,10 @@ describe('User Page Edit Tests', () => {
     cy.get('button[wire\\:click="openEditModal(\'a998c246-65c4-463b-b826-3e19899ff9b9\')"]').click();
     cy.get('#new-email')
       .clear()
-      .type('JaneSmith93@transtrack.id');
+      .type('MichaelBrown20@transtrack.id');
     cy.get('#new-username')
       .clear()
-      .type('HR');  
+      .type('MichaelBrown20');  
     cy.get('#eyeIconNewPassword').click();
     cy.get('button[wire\\:click="update"]').click();
     cy.contains('The email has already been taken.')

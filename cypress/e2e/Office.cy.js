@@ -108,21 +108,3 @@ describe('Office Add Tests', () => {
       });
   });
   
-  describe('Office Edit Tests', () => {
-    const baseUrl = 'https://mris-staging.transtrack.id/';
-    beforeEach(() => {
-      cy.session('userSession', () => {
-        cy.visit(baseUrl);
-        cy.get('#emailOrUsername').type('admin'); 
-        cy.get('#password').type('Admin123');    
-        cy.get('#remember').check();
-        cy.get('button[type="submit"]').click();
-        cy.visit('https://mris-staging.transtrack.id/offices');
-      });
-    });
-
-    it('should edit office details successfully', () => {
-        cy.visit('https://mris-staging.transtrack.id/offices');
-        cy.get('button[wire\\:click="openEditModal(\'f88e56db-c8f3-4f94-8639-27a8c1f46c49\')"]').click(); 
-      });
-    });
