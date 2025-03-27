@@ -16,7 +16,7 @@ describe('Meeting Room Add Test', () => {
   
     it('TC011 - Input meeting-rooms', () => {
         cy.visit('https://mris-staging.transtrack.id/meeting-rooms'); 
-        cy.get('#AddMeetingRoomButton').should('be.visible') .click(); 
+        cy.get('#btn-add-room').should('be.visible') .click(); 
         cy.get('#roomName').should('be.visible');
         const mountainNames = ['Gunung Merapi', 'Gunung Bromo', 'Gunung Rinjani', 'Gunung Semeru', 'Gunung Kerinci', 
           'Gunung Arjuno', 'Gunung Gede', 'Gunung Pangrango', 'Gunung Salak', 'Gunung Sumbing'];
@@ -46,7 +46,7 @@ describe('Meeting Room Add Test', () => {
 
     it('TC014 - check validasi name tidak terisi', () => {
       cy.visit('https://mris-staging.transtrack.id/meeting-rooms'); 
-      cy.get('#AddMeetingRoomButton').should('be.visible').click(); 
+      cy.get('#btn-add-room').should('be.visible').click(); 
       cy.get('#roomName').should('be.visible');
       cy.get('#roomName').clear();
       cy.get('#roomName').should('have.value', ''); 
@@ -73,7 +73,7 @@ describe('Meeting Room Add Test', () => {
   
   it('TC015 - check validasi capacity tidak terisi', () => {
     cy.visit('https://mris-staging.transtrack.id/meeting-rooms'); 
-    cy.get('#AddMeetingRoomButton').should('be.visible').click(); 
+    cy.get('#btn-add-room').should('be.visible').click(); 
     cy.get('#roomName').should('be.visible');
     const mountainNames = ['Gunung Merapi', 'Gunung Bromo', 'Gunung Rinjani', 'Gunung Semeru', 'Gunung Kerinci', 
       'Gunung Arjuno', 'Gunung Gede', 'Gunung Pangrango', 'Gunung Salak', 'Gunung Sumbing'];
@@ -102,7 +102,7 @@ describe('Meeting Room Add Test', () => {
 
 it('TC016 - check validasi office tidak terisi', () => {
   cy.visit('https://mris-staging.transtrack.id/meeting-rooms'); 
-  cy.get('#AddMeetingRoomButton').should('be.visible').click(); 
+  cy.get('#btn-add-room').should('be.visible').click(); 
   cy.get('#roomName').should('be.visible');
   const mountainNames = ['Gunung Merapi', 'Gunung Bromo', 'Gunung Rinjani', 'Gunung Semeru', 'Gunung Kerinci', 
     'Gunung Arjuno', 'Gunung Gede', 'Gunung Pangrango', 'Gunung Salak', 'Gunung Sumbing'];
@@ -122,7 +122,7 @@ it('TC016 - check validasi office tidak terisi', () => {
 
 it('TC018 - Input meeting-rooms duplikat', () => {
   cy.visit('https://mris-staging.transtrack.id/meeting-rooms'); 
-  cy.get('#AddMeetingRoomButton').should('be.visible') .click(); 
+  cy.get('#btn-add-room').should('be.visible') .click(); 
   cy.get('#roomName').should('be.visible');
   const mountainNames = ['Gunung Rinjani'];
   const randomMountainName = mountainNames[Math.floor(Math.random() * mountainNames.length)];
